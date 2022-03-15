@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\pysga\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\pysga\\.nuget\\packages"
+    ]
+  }
+}
