@@ -1,6 +1,6 @@
 ﻿<component name="ProjectRunConfigurationManager">
   <configuration default="false" name="MeadowPaymentService" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
-    <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MeadowPaymentService/MeadowPaymentService.csproj" />
+    <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Main/Main.csproj" />
     <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
     <option name="LAUNCH_PROFILE_NAME" value="MeadowPaymentService" />
     <option name="USE_EXTERNAL_CONSOLE" value="0" />

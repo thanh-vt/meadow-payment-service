@@ -4,6 +4,7 @@
         <TargetFramework>net5.0</TargetFramework>
         <UserSecretsId>aspnet-MeadowPaymentService-D999C690-974D-4053-924D-0ABDCF9C1BDF</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <RootNamespace>MeadowPaymentService</RootNamespace>
     </PropertyGroup>
 
 <!--    <ItemGroup>-->
