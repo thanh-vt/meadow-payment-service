@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <UserSecretsId>aspnet-MeadowPaymentService-D999C690-974D-4053-924D-0ABDCF9C1BDF</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <RootNamespace>MeadowPaymentService</RootNamespace>
@@ -12,21 +12,29 @@
 <!--    </ItemGroup>-->
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.15" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.15" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.15" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.17" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.15" />
-        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.2"/>
+        <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.2"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.2"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.2">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.2"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0"/>
     </ItemGroup>
 
-<!--    <ItemGroup>-->
-<!--        <Content Include="wwwroot\**">-->
-<!--            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>-->
-<!--        </Content>-->
-<!--    </ItemGroup>-->
+    <ItemGroup>
+        <Folder Include="Service"/>
+    </ItemGroup>
+
+    <!--    <ItemGroup>-->
+    <!--        <Content Include="wwwroot\**">-->
+    <!--            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>-->
+    <!--        </Content>-->
+    <!--    </ItemGroup>-->
 
 </Project>
