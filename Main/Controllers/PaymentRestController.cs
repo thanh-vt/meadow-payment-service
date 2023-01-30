@@ -8,7 +8,7 @@ using MeadowPaymentService.Models;
 
 namespace MeadowPaymentService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/payment")]
     [ApiController]
     public class PaymentRestController : ControllerBase
     {
@@ -19,16 +19,16 @@ namespace MeadowPaymentService.Controllers
             _context = context;
         }
 
-        // GET: api/PaymentRest
+        // GET: api/payment
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Payment>>> GetPayment()
         {
             return await _context.Payment.ToListAsync();
         }
 
-        // GET: api/PaymentRest/5
+        // GET: api/payment/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Payment>> GetPayment(int id)
+        public async Task<ActionResult<Payment>> GetPayment(string id)
         {
             var payment = await _context.Payment.FindAsync(id);
 
@@ -40,10 +40,10 @@ namespace MeadowPaymentService.Controllers
             return payment;
         }
 
-        // PUT: api/PaymentRest/5
+        // PUT: api/payment/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPayment(int id, Payment payment)
+        public async Task<IActionResult> PutPayment(string id, Payment payment)
         {
             if (id != payment.Id)
             {
@@ -71,7 +71,7 @@ namespace MeadowPaymentService.Controllers
             return NoContent();
         }
 
-        // POST: api/PaymentRest
+        // POST: api/payment
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Payment>> PostPayment(Payment payment)
@@ -82,7 +82,7 @@ namespace MeadowPaymentService.Controllers
             return CreatedAtAction("GetPayment", new { id = payment.Id }, payment);
         }
 
-        // DELETE: api/PaymentRest/5
+        // DELETE: api/payment/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePayment(int id)
         {
@@ -98,7 +98,7 @@ namespace MeadowPaymentService.Controllers
             return NoContent();
         }
 
-        private bool PaymentExists(int id)
+        private bool PaymentExists(string id)
         {
             return _context.Payment.Any(e => e.Id == id);
         }

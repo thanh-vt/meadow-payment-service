@@ -21,7 +21,7 @@ namespace MeadowPaymentService.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
             {
-                b.Property<string>("Id")
+                b.Property<string>("CustomerId")
                     .HasColumnType("TEXT");
 
                 b.Property<string>("ConcurrencyStamp")
@@ -36,7 +36,7 @@ namespace MeadowPaymentService.Data.Migrations
                     .HasColumnType("TEXT")
                     .HasMaxLength(256);
 
-                b.HasKey("Id");
+                b.HasKey("CustomerId");
 
                 b.HasIndex("NormalizedName")
                     .IsUnique()
@@ -47,7 +47,7 @@ namespace MeadowPaymentService.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
             {
-                b.Property<int>("Id")
+                b.Property<int>("CustomerId")
                     .ValueGeneratedOnAdd()
                     .HasColumnType("INTEGER");
 
@@ -61,7 +61,7 @@ namespace MeadowPaymentService.Data.Migrations
                     .IsRequired()
                     .HasColumnType("TEXT");
 
-                b.HasKey("Id");
+                b.HasKey("CustomerId");
 
                 b.HasIndex("RoleId");
 
@@ -70,7 +70,7 @@ namespace MeadowPaymentService.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
             {
-                b.Property<string>("Id")
+                b.Property<string>("CustomerId")
                     .HasColumnType("TEXT");
 
                 b.Property<int>("AccessFailedCount")
@@ -120,7 +120,7 @@ namespace MeadowPaymentService.Data.Migrations
                     .HasColumnType("TEXT")
                     .HasMaxLength(256);
 
-                b.HasKey("Id");
+                b.HasKey("CustomerId");
 
                 b.HasIndex("NormalizedEmail")
                     .HasName("EmailIndex");
@@ -134,7 +134,7 @@ namespace MeadowPaymentService.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
             {
-                b.Property<int>("Id")
+                b.Property<int>("CustomerId")
                     .ValueGeneratedOnAdd()
                     .HasColumnType("INTEGER");
 
@@ -148,7 +148,7 @@ namespace MeadowPaymentService.Data.Migrations
                     .IsRequired()
                     .HasColumnType("TEXT");
 
-                b.HasKey("Id");
+                b.HasKey("CustomerId");
 
                 b.HasIndex("UserId");
 

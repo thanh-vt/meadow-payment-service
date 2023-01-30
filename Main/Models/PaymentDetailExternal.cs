@@ -5,21 +5,27 @@ using MeadowPaymentService.Constant;
 
 namespace MeadowPaymentService.Models
 {
-    [Table("payment_detail")]
-    public class PaymentDetail
+    [Table("payment_detail_external")]
+    public class PaymentDetailExternal
     {
         [Key]
         [Column("id")]
         public string Id { get; set; }
 
-        [Column("type")]
-        public string Type { get; set; }
+        [Column("payment_detail_id")]
+        public string PaymentDetailId { get; set; }
         
-        [Column("amount")]
-        public decimal Amount { get; set; }
+        [Column("cmd")]
+        public string Cmd { get; set; }
         
-        [Column("fee")]
-        public decimal Fee { get; set; }
+        [Column("url")]
+        public string Url { get; set; }
+        
+        [Column("request")]
+        public string Request { get; set; }
+        
+        [Column("response")]
+        public string Response { get; set; }
         
         [Column("created_date")]
         [DataType(DataType.DateTime)]

@@ -12,6 +12,7 @@
 <!--    </ItemGroup>-->
 
     <ItemGroup>
+        <PackageReference Include="AspNetCore.RouteAnalyzer" Version="0.5.3"/>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.2"/>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.2"/>
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.2"/>
@@ -25,9 +26,11 @@
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.2"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1"/>
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="1.1.0"/>
+        <PackageReference Include="StackExchange.Redis" Version="2.6.90"/>
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="Config"/>
         <Folder Include="Service"/>
     </ItemGroup>
 

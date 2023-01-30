@@ -13,17 +13,17 @@ namespace MeadowPaymentService.Models
     {
         [Key]
         [Column("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
         
         [Column("status")]
         public PaymentStatus Status { get; set; }
 
         [Column("created_date")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime CreatedDate { get; set; }
         
         [Column("updated_date")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime UpdatedDate { get; set; }
 
         [NotMapped]

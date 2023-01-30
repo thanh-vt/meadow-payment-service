@@ -2,7 +2,9 @@
 {
     public enum SourceType
     {
-        Internal = 1,
-        External = 2
+        MobileMoney = 1,
+        Bank = 2,
+        InternationalOrganization = 3,
+        EWallet = 4
     }
 }

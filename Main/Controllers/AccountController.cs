@@ -7,6 +7,8 @@ using MeadowPaymentService.Models;
 
 namespace MeadowPaymentService.Controllers
 {
+    [Route("account")]
+    [Controller]
     public class AccountController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -17,13 +19,15 @@ namespace MeadowPaymentService.Controllers
         }
 
         // GET: Account
+        [HttpGet("", Name = "AccountRoute")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Account.ToListAsync());
         }
 
         // GET: Account/Details/5
-        public async Task<IActionResult> Details(int? id)
+        [HttpGet("details/{id}", Name = "AccountDetailsRoute")]
+        public async Task<IActionResult> Details(string id)
         {
             if (id == null)
             {
@@ -31,7 +35,7 @@ namespace MeadowPaymentService.Controllers
             }
 
             var account = await _context.Account
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (account == null)
             {
                 return NotFound();
@@ -41,6 +45,7 @@ namespace MeadowPaymentService.Controllers
         }
 
         // GET: Account/Create
+        [HttpGet("create", Name = "AccountCreateRoute")]
         public IActionResult Create()
         {
             return View();
@@ -49,9 +54,9 @@ namespace MeadowPaymentService.Controllers
         // POST: Account/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("create")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Code,PhoneNumber,Email,Status,Balance,CreatedDate,UpdatedDate")] Account account)
+        public async Task<IActionResult> Create([Bind("CustomerId,Code,PhoneNumber,Email,Status,Balance,CreatedDate,UpdatedDate")] Account account)
         {
             if (ModelState.IsValid)
             {
@@ -63,7 +68,8 @@ namespace MeadowPaymentService.Controllers
         }
 
         // GET: Account/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        [HttpGet("edit/{id}", Name = "AccountEditRoute")]
+        public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
             {
@@ -81,11 +87,11 @@ namespace MeadowPaymentService.Controllers
         // POST: Account/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost("edit/{id}")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Code,PhoneNumber,Email,Status,Balance,CreatedDate,UpdatedDate")] Account account)
+        public async Task<IActionResult> Edit(string id, [Bind("CustomerId,Code,PhoneNumber,Email,Status,Balance,CreatedDate,UpdatedDate")] Account account)
         {
-            if (id != account.Id)
+            if (id != account.CustomerId)
             {
                 return NotFound();
             }
@@ -99,7 +105,7 @@ namespace MeadowPaymentService.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!AccountExists(account.Id))
+                    if (!AccountExists(account.CustomerId))
                     {
                         return NotFound();
                     }
@@ -114,7 +120,8 @@ namespace MeadowPaymentService.Controllers
         }
 
         // GET: Account/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [HttpGet("delete/{id}", Name = "AccountDeleteRoute")]
+        public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
             {
@@ -122,7 +129,7 @@ namespace MeadowPaymentService.Controllers
             }
 
             var account = await _context.Account
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.CustomerId == id);
             if (account == null)
             {
                 return NotFound();
@@ -132,9 +139,9 @@ namespace MeadowPaymentService.Controllers
         }
 
         // POST: Account/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost("delete/{id}"), ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var account = await _context.Account.FindAsync(id);
             _context.Account.Remove(account);
@@ -142,9 +149,9 @@ namespace MeadowPaymentService.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AccountExists(int id)
+        private bool AccountExists(string id)
         {
-            return _context.Account.Any(e => e.Id == id);
+            return _context.Account.Any(e => e.CustomerId == id);
         }
     }
 }

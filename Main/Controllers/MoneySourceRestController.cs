@@ -5,10 +5,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MeadowPaymentService.Data;
 using MeadowPaymentService.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MeadowPaymentService.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("/api/money-source")]
     [ApiController]
     public class MoneySourceRestController : ControllerBase
     {
@@ -19,16 +21,16 @@ namespace MeadowPaymentService.Controllers
             _context = context;
         }
 
-        // GET: api/MoneySourceRest
+        // GET: api/money-source
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MoneySource>>> GetMoneySource()
         {
             return await _context.MoneySource.ToListAsync();
         }
 
-        // GET: api/MoneySourceRest/5
+        // GET: api/money-source/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<MoneySource>> GetMoneySource(int id)
+        public async Task<ActionResult<MoneySource>> GetMoneySource(string id)
         {
             var moneySource = await _context.MoneySource.FindAsync(id);
 
@@ -40,12 +42,12 @@ namespace MeadowPaymentService.Controllers
             return moneySource;
         }
 
-        // PUT: api/MoneySourceRest/5
+        // PUT: api/money-source/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutMoneySource(int id, MoneySource moneySource)
+        [HttpPut("{code}")]
+        public async Task<IActionResult> PutMoneySource(string code, MoneySource moneySource)
         {
-            if (id != moneySource.Id)
+            if (code != moneySource.Code)
             {
                 return BadRequest();
             }
@@ -58,20 +60,18 @@ namespace MeadowPaymentService.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MoneySourceExists(id))
+                if (!MoneySourceExists(code))
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
             return NoContent();
         }
 
-        // POST: api/MoneySourceRest
+        // POST: api/money-source
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<MoneySource>> PostMoneySource(MoneySource moneySource)
@@ -79,12 +79,12 @@ namespace MeadowPaymentService.Controllers
             _context.MoneySource.Add(moneySource);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMoneySource", new { id = moneySource.Id }, moneySource);
+            return CreatedAtAction("GetMoneySource", new { id = moneySource.Code }, moneySource);
         }
 
-        // DELETE: api/MoneySourceRest/5
+        // DELETE: api/money-source/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMoneySource(int id)
+        public async Task<IActionResult> DeleteMoneySource(string id)
         {
             var moneySource = await _context.MoneySource.FindAsync(id);
             if (moneySource == null)
@@ -98,9 +98,9 @@ namespace MeadowPaymentService.Controllers
             return NoContent();
         }
 
-        private bool MoneySourceExists(int id)
+        private bool MoneySourceExists(string code)
         {
-            return _context.MoneySource.Any(e => e.Id == id);
+            return _context.MoneySource.Any(e => e.Code == code);
         }
     }
 }
