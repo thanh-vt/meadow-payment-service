@@ -14,6 +14,10 @@ namespace MeadowPaymentService.Models
 
         [Column("payment_detail_id")]
         public string PaymentDetailId { get; set; }
+
+        [Column("account_card_id")] public string AccountCardId { get; set; }
+
+        [Column("account_link_id")] public string AccountLinkId { get; set; }
         
         [Column("cmd")]
         public string Cmd { get; set; }
