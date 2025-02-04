@@ -4,3 +4,6 @@ obj/
 riderModule.iml
 /_ReSharper.Caches/
 .env
+.idea/.idea.MeadowPaymentService/.idea/dataSources
+.idea/.idea.MeadowPaymentService/.idea/httpRequests
+.idea/.idea.MeadowPaymentService/.idea/sonarlint
